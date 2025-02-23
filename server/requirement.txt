@@ -1,0 +1,6 @@
+express
+cors
+pg
+jsonwebtoken
+bcrypt
+nodemon
