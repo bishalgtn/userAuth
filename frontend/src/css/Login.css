@@ -44,3 +44,7 @@
   input[type="submit"]:hover {
     background-color: #45a049;
   }
+
+  .formpage{
+    text-align: center;
+  }

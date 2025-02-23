@@ -57,7 +57,7 @@ const Register = () => {
 
     return (
         <><div className='body'>
-            <form id="myForm" onSubmit={handleSubmit}><h2>Register Form</h2>
+            <form id="myForm" onSubmit={handleSubmit}><h2 className='formpage'>Register Form</h2>
                 {Object.keys(formError).length === 0 && isSubmit ? (<div className="ui message success">Signed in successfully</div>) : (<></>)}
                 <label >Name:</label>
 
