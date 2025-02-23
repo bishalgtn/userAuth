@@ -2,7 +2,7 @@ import '../css/Login.css'
 import { useState, useEffect } from 'react';
 
 const Register = () => {
-    const inputValues = { username: "", email: "", number: "", password: "", rePassword: "" };
+    const inputValues = { username: "", email: "", number: "", password: "", rePassword: "", role: "" };
     const [formvalues, setformValues] = useState(inputValues);
     const [formError, setformErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -52,6 +52,9 @@ const Register = () => {
         else if (values.password != values.rePassword) {
             error.repassword = 'password must be same';
         }
+        if (!values.email && !values.username && !values.number && !values.rePassword) {
+            console.log("form is empty")
+        }
         return error;
     }
 
@@ -61,6 +64,7 @@ const Register = () => {
                 {Object.keys(formError).length === 0 && isSubmit ? (<div className="ui message success">Signed in successfully</div>) : (<></>)}
                 <label >Name:</label>
 
+                <input type="text" id="username" name="username" value={formvalues.username} onChange={formValuesUpdate} />
                 <input type="text" id="username" name="username" value={formvalues.username} onChange={formValuesUpdate} />
                 <span id="nameError" className="error">{formError.username}</span>
 
