@@ -22,3 +22,18 @@ module.exports = (req, res, next) => {
 
     next();
 };
+
+
+// summary(dataset)
+// ggplot(dataset, aes(x=credit_score)) +
+//   geom_bar(fill="skyblue") +
+//   labs(title="Distribution of Credit Scores", x="Credit Score", y="Count") +
+//   theme_minimal()
+
+
+
+// ggplot(dataset, aes(x=Credit_Score)) +
+//   geom_bar(fill="skyblue") +
+//   labs(title="Distribution of Credit Scores", x="Credit Score", y="Count") +
+//   theme_minimal()
+

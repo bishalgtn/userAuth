@@ -7,12 +7,11 @@ const Register = () => {
     const [formError, setformErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setformErrors(validate(formvalues));
         setIsSubmit(true);
     };
-
     useEffect(() => {
         console.log(formError);
         if (Object.keys(formError).length === 0 && isSubmit) {
@@ -23,6 +22,10 @@ const Register = () => {
     const formValuesUpdate = (event) => {
         const { name, value } = event.target;
         setformValues({ ...formvalues, [name]: value });
+    }
+
+    const onChange = e => {
+        setInputs({ ...inputs, [e.target.name]: e.target.value });
     }
 
     const validate = (values) => {
@@ -64,8 +67,8 @@ const Register = () => {
                 {Object.keys(formError).length === 0 && isSubmit ? (<div className="ui message success">Signed in successfully</div>) : (<></>)}
                 <label >Name:</label>
 
-                <input type="text" id="username" name="username" value={formvalues.username} onChange={formValuesUpdate} />
-                <input type="text" id="username" name="username" value={formvalues.username} onChange={formValuesUpdate} />
+                <input type="text" id="username" name="username" value={formvalues.username} onChange={e => onChange(e)} />
+                <input type="hidden" id="role" name="role" value={formvalues.username} onChange={formValuesUpdate} />
                 <span id="nameError" className="error">{formError.username}</span>
 
                 <label>Email:</label>
@@ -84,7 +87,7 @@ const Register = () => {
                 <input type="password" id="confirmPassword" name="rePassword" value={formvalues.rePassword} onChange={formValuesUpdate} />
                 <span id="confirmPasswordError" className="error">{formError.repassword}</span>
 
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Request to Approve" />
             </form ></div>
         </>
     );

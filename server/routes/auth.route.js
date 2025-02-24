@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwtpass = require('../config/auth.config');
 const jwtGenerator = require("../utils/jwtGenerator");
 const validInfo = require("../middleware/valide.mw")
+const auth = require("../middleware/auth.mw")
 
 router.post("/register", validInfo, async (req, res) => {
     try {
@@ -55,7 +56,7 @@ router.post("/login", validInfo, async (req, res) => {
         }
 
         const jwtToken = jwtGenerator(user.rows[0].user_id);
-        return res.status(201).json({ message: "User login successfully", user: user.rows[0], jwtToken });
+        return res.status(201).json({ message: "User login successfully", jwtToken });
 
     } catch (error) {
         console.error("Error:", error.message);
@@ -63,4 +64,12 @@ router.post("/login", validInfo, async (req, res) => {
     }
 });
 
+router.get("/is-verify", auth, async (req, res) => {
+    try {
+        res.json(true);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("server Error")
+    }
+})
 module.exports = router;
